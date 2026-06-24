@@ -1,4 +1,4 @@
-module TOP_ML_DSA_SHAKE (
+module ML_DSA_LIGHTWEIGHT_SHAKE (
     input  wire        iClk,
     input  wire        iRst_n,
     input  wire        iStart,
@@ -55,11 +55,6 @@ module TOP_ML_DSA_SHAKE (
         .iword(iword), .oRound(oRound),
         .oState(oState), .oHash(oHash)
     );
-
-    // SHAKE_RC u_rom (
-    //     .iRC(iRC), 
-    //     .RC(RC)
-    // );
 
     SHAKE_KECCAK_F u_math (
         .iState(oState), 
