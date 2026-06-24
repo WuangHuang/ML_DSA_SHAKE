@@ -36,7 +36,7 @@ module ML_DSA_SHAKE_PADDER (
         (iState == PAD_BLK && iCycle_Cnt == 5'd0) ? ENDPADDING :
         
         // MESSAGE ENDED -> NEXT ENDPADDING -> DATAPATH
-        (iState == ABSORB_SHIFT && MessageEnded && iCycle_Cnt == Word_Idx) ? ENDPADDING :
+        (iState == ABSORB_SHIFT && MessageEnded && iCycle_Cnt == Word_Idx && iCycle_Cnt < rate_lanes) ? ENDPADDING :
         
         // DATA_INPUT -> DATAPATH
         (iState == ABSORB_SHIFT && !MessageEnded && iReady) ? 
