@@ -43,9 +43,7 @@ module ML_DSA_SHAKE_PADDER (
             ((iLast && iLast_16bit) ? DATA_2BIT_PAD6BYTE : data_swapped) :
             
         // CAPACITOR 
-        64'h0;
-
-        
+        64'h0;        
 
     //flag last block (block[16] or block[20])
     wire flag_last_lane = (iCycle_Cnt == (rate_lanes - 5'd1));

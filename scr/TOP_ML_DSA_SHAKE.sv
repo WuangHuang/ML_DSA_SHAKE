@@ -56,14 +56,14 @@ module TOP_ML_DSA_SHAKE (
         .oState(oState), .oHash(oHash)
     );
 
-    SHAKE_RC u_rom (
-        .iRC(iRC), 
-        .RC(RC)
-    );
+    // SHAKE_RC u_rom (
+    //     .iRC(iRC), 
+    //     .RC(RC)
+    // );
 
     SHAKE_KECCAK_F u_math (
         .iState(oState), 
-        .RC(RC), 
+        .iRound_Index(iRC), 
         .oState(oRound)
     );
 
