@@ -56,8 +56,6 @@ module TOP_ML_DSA_SHAKE (
         .oState(oState), .oHash(oHash)
     );
 
-
-
     SHAKE_KECCAK_F u_math (
         .iState(oState), 
         .iRound_Index(iRC), 
