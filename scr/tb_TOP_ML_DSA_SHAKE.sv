@@ -2,7 +2,6 @@
 
 module tb_TOP_ML_DSA_SHAKE();
 
-    // 1. Khai báo tín hiệu
     reg         iClk;
     reg         iRst_n;
     reg         iStart;
