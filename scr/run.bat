@@ -1,4 +1,4 @@
-iverilog -g2012 -o simv *.sv 
+iverilog -g2012 -o simv *LIGHTWEIGHT*.sv 
 if %ERRORLEVEL% NEQ 0 (
     echo.
     echo [ERROR] COMPILATION FAILED!

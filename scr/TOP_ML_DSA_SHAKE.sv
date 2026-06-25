@@ -9,7 +9,7 @@ module ML_DSA_LIGHTWEIGHT_SHAKE (
     input  wire        iValid,
     input  wire        iLast,
     input  wire        iLast_16bit,
-    output wire        oReady,
+    output wire        oReady,w
     
     // Output (XOF Squeeze)
     input  wire        iSqueeze_En,
