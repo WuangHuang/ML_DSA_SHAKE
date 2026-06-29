@@ -49,26 +49,27 @@ module ML_DSA_LIGHTWEIGHT_SHAKE (
     always @(*) begin
         inject_word = 64'h0; // CAPCITY
         
+        //STATE ABSORB
         if (state == ST_ABSORB && cycle_cnt < rate_lanes) begin
-            if (!EndMessage_Flag && iReady) begin
+            if (!EndMessage_Flag && iReady) 
                 if (iLast && iLast_16bit) 
                     // 2 BYTE MESSAGE + 6 BYTE PAD
                     inject_word = {40'h00, 8'h1F, iData[7:0], iData[15:8]}; 
                 else 
                     inject_word = data_swapped; // 8 BYTE MESSAGE
-            end 
-            else if (EndMessage_Flag && cycle_cnt == iword) begin
+             
+            else if (EndMessage_Flag && cycle_cnt == iword) 
                 inject_word[7:0] = 8'h1F; // SUFFIX PAD
-            end
             
-            if (cycle_cnt == (rate_lanes - 5'd1)) begin
-                if (!EndMessage_Flag && iReady && iLast && !iLast_16bit) begin
+            if (cycle_cnt == (rate_lanes - 5'd1)) 
+                if (!EndMessage_Flag & iReady & iLast & !iLast_16bit) begin end
                     // ENDING PAD
-                end else if (EndMessage_Flag || (iReady && iLast)) begin
+                else if (EndMessage_Flag || (iReady && iLast)) 
                     inject_word[63:56] = inject_word[63:56] | 8'h80;
-                end
-            end
+            
         end 
+
+        //STATE PAD10*1
         else if (state == ST_PAD_ONLY && cycle_cnt < rate_lanes) begin
             if (cycle_cnt == 0) inject_word[7:0] = 8'h1F;
             if (cycle_cnt == (rate_lanes - 5'd1)) inject_word[63:56] = 8'h80;

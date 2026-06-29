@@ -141,6 +141,22 @@ module tb_ML_DSA_LIGHTWAVE_SHAKE();
         iRst_n = 1;
         #20;
 
+        $display("TEST 0: ExpandS / ExpandMask (66 Byte)");
+        iStart = 1;
+        iMode = 1'b1;
+        start_hash();
+        mute_log = 0;
+        send_word(64'h1111222233334444, 1'b0, 1'b0); 
+        send_word(64'h5555666677778888, 1'b0, 1'b0); 
+        send_word(64'h9999AAAABBBBCCCC, 1'b0, 1'b0); 
+        send_word(64'hDDDDEEEEFFFF0000, 1'b0, 1'b0); 
+        send_word(64'hB1B2B3B4B5B6B7B8, 1'b0, 1'b0); 
+        send_word(64'hC1C2C3C4C5C6C7C8, 1'b0, 1'b0); 
+        send_word(64'hD1D2D3D4D5D6D7D8, 1'b0, 1'b0); 
+        send_word(64'hE1E2E3E4E5E6E7E8, 1'b0, 1'b0); 
+        send_word(64'h000000000000ABCD, 1'b1, 1'b1); // Word 9 
+        check_hash(1088'h51C940EE404481023B443CEE19942EC600E8C8EC22ABCF4F2750CD450966040715BC2084C5C7936792B9E405802CD101BC05425A5CC58791A4195EBB7BE98B0F0D311FB5BF6C70B0487E9BB3484E174F76CFB4EFAD1A33D283270CAF116464EE8A847646B3AB1A8E30B6440CC7A225CA7DAAB2851C9DC1C7746F612980F642F9864CA4E5D8F9930E);
+
         iStart = 1;
         $display("TEST 1: KeyGen - Expand Seed (32 Byte)");
         iMode = 1'b1;

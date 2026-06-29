@@ -1,4 +1,4 @@
-iverilog -g2012 -o simv *LIGHTWEIGHT*.sv 
+iverilog -g2012 -o simv ML_DSA_LIGHTWEIGHT_SHAKE.sv tb_ML_DSA_LIGHTWEIGHT_SHAKE.sv 
 if %ERRORLEVEL% NEQ 0 (
     echo.
     echo [ERROR] COMPILATION FAILED!
